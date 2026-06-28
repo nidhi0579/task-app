@@ -1,10 +1,6 @@
-// Add this as the VERY FIRST line
-require('dotenv').config(); 
-
-const express = require('express');
 const mongoose = require('mongoose');
+const uri = process.env.MONGO_URI; // This must match the name in Render
 
-// Now you can safely use process.env.MONGO_URI
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected Successfully"))
-  .catch(err => console.error("❌ Connection Error:", err));
+mongoose.connect(uri)
+  .then(() => console.log('✅ MongoDB Connected Successfully'))
+  .catch((err) => console.log('❌ Connection Error:', err));
